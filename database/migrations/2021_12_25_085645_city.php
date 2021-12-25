@@ -13,7 +13,13 @@ class City extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('city', function (Blueprint $table){
+            $table ->id();
+            $table ->UnsignedBigInteger('state_id');
+            $table ->foreign('state_id')->references('id')->on('state')->onDelete('cascade');
+            $table ->string('name');
+            $table ->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,7 @@ class City extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('city');
+
     }
 }

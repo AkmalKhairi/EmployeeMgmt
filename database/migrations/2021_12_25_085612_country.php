@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class State extends Migration
+class Country extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class State extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('country', function (Blueprint $table){
+            $table ->id();
+            $table ->char('country_code');
+            $table ->string('name');
+            $table ->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class State extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('country');
     }
 }
